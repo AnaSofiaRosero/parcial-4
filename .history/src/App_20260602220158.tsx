@@ -6,7 +6,7 @@ import type { Departamento, Empleado } from "./types";
 import DepartamentoForm from "./components/DepartamentoForm";
 import EmpleadoForm from "./components/EmpleadoForm";
 
-// Componentes de tablas (leer y eliminar)
+// Componentes de tablas (leer + eliminar)
 import DepartamentoTable from "./components/DepartamentoTable";
 import EmpleadoTable from "./components/EmpleadoTable";
 
@@ -40,10 +40,10 @@ function App() {
     setDepartamentos(data || []);
   };
 
-  
+  // Consulta todos los empleados desde Supabase
   const cargarEmpleados = async () => {
     const { data, error } = await supabase
-      .from("empleados")
+      .from("empleados") // Nombre exacto de la tabla en Supabase
       .select("*");
     if (error) { console.error("Error cargando empleados:", error); return; }
     setEmpleados(data || []);
@@ -52,43 +52,44 @@ function App() {
   return (
     <div className="container">
 
-  
+      {/* ── Header de la aplicación ─────────────────────── */}
       <div className="app-header">
         <h1 className="title">Employees Manager</h1>
         <p className="title-sub">Gestión de talento y estructura organizacional</p>
       </div>
 
-   
+      {/* ── Formularios: crear departamento y empleado ──── */}
       <div className="forms-grid">
-    
+        {/* Al crear, recarga la lista correspondiente */}
         <DepartamentoForm onCreated={cargarDepartamentos} />
         <EmpleadoForm departamentos={departamentos} onCreated={cargarEmpleados} />
       </div>
 
-    
+      {/* ── Tablas: listar, editar y eliminar ───────────── */}
       <DepartamentoTable
         departamentos={departamentos}
-        onEdit={setModalDept}         
-        onDeleted={cargarDepartamentos} 
+        onEdit={setModalDept}           // Abre modal con el departamento seleccionado
+        onDeleted={cargarDepartamentos} // Recarga tras eliminar
       />
       <EmpleadoTable
         empleados={empleados}
         departamentos={departamentos}
-        onEdit={setModalEmp}            
-        onDeleted={cargarEmpleados}     
+        onEdit={setModalEmp}            // Abre modal con el empleado seleccionado
+        onDeleted={cargarEmpleados}     // Recarga tras eliminar
       />
 
-
+      {/* ── Modales: editar departamento y empleado ──────── */}
+      {/* Solo se renderizan cuando modalDept/modalEmp no es null */}
       <DepartamentoModal
         departamento={modalDept}
-        onClose={() => setModalDept(null)}    
-        onSaved={cargarDepartamentos}          
+        onClose={() => setModalDept(null)}     // Cierra el modal
+        onSaved={cargarDepartamentos}          // Recarga tras guardar
       />
       <EmpleadoModal
         empleado={modalEmp}
         departamentos={departamentos}
-        onClose={() => setModalEmp(null)}     
-        onSaved={cargarEmpleados}              
+        onClose={() => setModalEmp(null)}      // Cierra el modal
+        onSaved={cargarEmpleados}              // Recarga tras guardar
       />
 
     </div>

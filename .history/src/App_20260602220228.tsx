@@ -6,7 +6,7 @@ import type { Departamento, Empleado } from "./types";
 import DepartamentoForm from "./components/DepartamentoForm";
 import EmpleadoForm from "./components/EmpleadoForm";
 
-// Componentes de tablas (leer y eliminar)
+// Componentes de tablas (leer + eliminar)
 import DepartamentoTable from "./components/DepartamentoTable";
 import EmpleadoTable from "./components/EmpleadoTable";
 
@@ -87,8 +87,8 @@ function App() {
       <EmpleadoModal
         empleado={modalEmp}
         departamentos={departamentos}
-        onClose={() => setModalEmp(null)}     
-        onSaved={cargarEmpleados}              
+        onClose={() => setModalEmp(null)}      // Cierra el modal
+        onSaved={cargarEmpleados}              // Recarga tras guardar
       />
 
     </div>
