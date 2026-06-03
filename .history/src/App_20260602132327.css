@@ -1,0 +1,200 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#f3f4f6;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color:#374151;
+}
+
+#root{
+  width:100%;
+  min-height:100vh;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:30px;
+}
+
+h1{
+  color:#00897b;
+  margin-bottom:30px;
+  font-size:38px;
+}
+
+h2{
+  color:#00897b;
+  margin-bottom:20px;
+  font-size:28px;
+}
+
+.formSection{
+  background:white;
+  border-radius:12px;
+  padding:25px;
+  margin-bottom:30px;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+}
+
+.formSection h2{
+  margin-bottom:20px;
+}
+
+.formRow{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+input,
+select{
+  flex:1;
+  min-width:180px;
+  padding:12px 15px;
+  border:1px solid #d1d5db;
+  border-radius:8px;
+  font-size:15px;
+  outline:none;
+}
+
+input:focus,
+select:focus{
+  border-color:#009688;
+}
+
+.primaryBtn{
+  background:#009688;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.primaryBtn:hover{
+  background:#00796b;
+}
+
+.editBtn{
+  background:none;
+  border:none;
+  color:#009688;
+  cursor:pointer;
+  font-weight:600;
+  margin-right:15px;
+}
+
+.deleteBtn{
+  background:none;
+  border:none;
+  color:#ef4444;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.tableCard{
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+}
+
+.tableHeader{
+  padding:20px;
+  border-bottom:1px solid #e5e7eb;
+}
+
+.tableHeader h2{
+  margin:0;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th{
+  text-align:left;
+  padding:16px;
+  background:#f9fafb;
+  color:#6b7280;
+  font-size:13px;
+  text-transform:uppercase;
+}
+
+td{
+  padding:16px;
+  border-top:1px solid #e5e7eb;
+}
+
+tr:hover{
+  background:#fafafa;
+}
+
+.salary{
+  font-weight:600;
+}
+
+.navbar{
+  background:white;
+  height:70px;
+  margin-bottom:30px;
+  border-radius:12px;
+  box-shadow:0 2px 15px rgba(0,0,0,.08);
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:0 25px;
+}
+
+.logo{
+  color:#009688;
+  font-size:24px;
+  font-weight:700;
+}
+
+.menu{
+  display:flex;
+  gap:25px;
+}
+
+.menu span{
+  color:#6b7280;
+  font-weight:500;
+}
+
+@media(max-width:900px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .formRow{
+    flex-direction:column;
+  }
+
+  input,
+  select{
+    width:100%;
+  }
+
+  table{
+    display:block;
+    overflow-x:auto;
+  }
+}
